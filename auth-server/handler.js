@@ -78,6 +78,6 @@ module.exports.getAccessToken = async (event) => {
       return {
         statusCode: 500,
         body: JSON.stringify(err),
-      },
+      };
     });
 };
