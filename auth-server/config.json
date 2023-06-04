@@ -1,0 +1,6 @@
+{
+    "CLIENT_ID": "332446659671-p1qotp9d0gej6p34oeq3rp246vcl99kr.apps.googleusercontent.com",
+    "PROJECT_ID": "meet-application-386221","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+    "CLIENT_SECRET": "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","redirect_uris":["https://ejquezada.github.io/Meet/"],
+    "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+  }
