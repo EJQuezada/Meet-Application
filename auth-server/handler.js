@@ -97,7 +97,6 @@ module.exports.getCalendarEvents = event => {
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise( (resolve, reject) => { 
-
     calendar.events.list(
       {
         calendarId: calendar_id,
@@ -114,7 +113,6 @@ module.exports.getCalendarEvents = event => {
         }
       }
     );
-  
   })
   .then( results => {
     return {
@@ -134,5 +132,4 @@ module.exports.getCalendarEvents = event => {
       body: JSON.stringify(error),
     };
   });
-  
-}
+};
