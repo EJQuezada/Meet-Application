@@ -107,9 +107,9 @@ module.exports.getCalendarEvents = event => {
       },
       (error, response) => {
         if (error) {
-          reject{error};
+          reject(error);
         } else {
-          resolve{response};
+          resolve(response);
         }
       }
     );
