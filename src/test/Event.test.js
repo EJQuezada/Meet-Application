@@ -10,7 +10,7 @@ describe("<Event /> component", () => {
     EventWrapper = shallow(<Event event={event} />);
   });
 
-  test("corresct details are rendered", () => {
+  test("correct details are rendered", () => {
     const display = EventWrapper.find(".detailsButton");
     display.simulate("click");
     const summary = EventWrapper.find(".title");
