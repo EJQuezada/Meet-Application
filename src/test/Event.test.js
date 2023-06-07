@@ -4,9 +4,10 @@ import Event from "../Event";
 import { mockData } from "../mock-data";
 
 describe("<Event /> component", () => {
-  let EventWrapper, event;
+  let EventWrapper;
+  const event = mockData[0];
   beforeAll(() => {
-    event = mockData[0];
+    //event = mockData[0];
     EventWrapper = shallow(<Event event={event} />);
   });
 
