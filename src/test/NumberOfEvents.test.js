@@ -13,9 +13,9 @@ describe("<NumberOfEvents/> component", () => {
     });
 
     test("Value changes correctly", () => {
-        NumberOfEventsWrapper.find(".numberOfEvents").simulate("change", {
+        NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', {
             target: { value: 20 },
         });
-        expect(NumberOfEventsWrapper.state("query")).toBe(20);
+        expect(NumberOfEventsWrapper.state('query')).toBe(20);
     });
 });
