@@ -33,7 +33,6 @@ class CitySearch extends Component {
                     className='city'
                     value={this.state.query}
                     onChange={this.handleInputChanged}
-                    
                 />
                 <ul 
                     className='suggestions'
