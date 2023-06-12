@@ -12,10 +12,16 @@ describe("<NumberOfEvents/> component", () => {
         expect(NumberOfEventsWrapper.state("query")).toBe(32);
     });
 
-    test("render number of events input correctly", () => {
-        const numberOfEvents = NumberOfEventsWrapper.state("query");
-        expect(NumberOfEventsWrapper.find(".number-of-events-input").prop("value")).toBe(
-        numberOfEvents
-        );
+    test("render number of events label", () => {
+        expect(NumberOfEventsWrapper.find(".number-of-events-label")).toHaveLength(1);
     });
+
+    test("Value changes correctly", () => {
+        NumberOfEventsWrapper.find(".numberOfEvents").simulate("change", {
+          target: { value: 20 },
+        });
+        expect(NumberOfEventsWrapper.state("query")).toBe(20);
+      });
+
+    
 });
