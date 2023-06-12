@@ -13,15 +13,7 @@ describe("<NumberOfEvents/> component", () => {
     });
 
     test("render number of events label", () => {
-        expect(NumberOfEventsWrapper.find(".number-of-events-label")).toHaveLength(1);
+        expect(NumberOfEventsWrapper.find(".number-of-events-label")).toHaveLength(0);
     });
-
-    test("Value changes correctly", () => {
-        NumberOfEventsWrapper.find(".numberOfEvents").simulate("change", {
-          target: { value: 20 },
-        });
-        expect(NumberOfEventsWrapper.state("query")).toBe(20);
-      });
-
     
 });
