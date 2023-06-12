@@ -14,6 +14,10 @@ describe("<Event /> component", () => {
     expect(EventWrapper).toBeDefined();
   });
 
+  test("render event", () => {
+    expect(EventWrapper.find(".event")).toHaveLength(1);
+  });
+
   test("correct details are rendered", () => {
     const display = EventWrapper.find(".detailsButton");
     display.simulate("click");
