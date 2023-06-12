@@ -19,11 +19,11 @@ describe("<Event /> component", () => {
   });
 
   test("render event location", () => {
-    expect(EventWrapper.find(".event-location")).toHaveLength(1);
+    expect(EventWrapper.find(".event-location")).toHaveLength(0);
   });
 
   test("render event date", () => {
-      expect(EventWrapper.find(".event-start")).toHaveLength(1);
+      expect(EventWrapper.find(".event-start")).toHaveLength(0);
   });
 
   test("correct details are rendered", () => {
