@@ -18,6 +18,14 @@ describe("<Event /> component", () => {
     expect(EventWrapper.find(".event")).toHaveLength(0);
   });
 
+  test("render event location", () => {
+    expect(EventWrapper.find(".event-location")).toHaveLength(1);
+  });
+
+  test("render event date", () => {
+      expect(EventWrapper.find(".event-start")).toHaveLength(1);
+  });
+
   test("correct details are rendered", () => {
     const display = EventWrapper.find(".detailsButton");
     display.simulate("click");
