@@ -1,4 +1,5 @@
 import { mockData } from "./mock-data";
+import { extractLocations, getEvents } from "../api";
 export const getEvents = async () => {
     return mockData;
 };
