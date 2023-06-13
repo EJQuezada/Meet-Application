@@ -22,7 +22,7 @@ class CitySearch extends Component {
             query: suggestion,
             showSuggestions: false,
         });
-        //this.props.updateEvents(suggestion);
+        this.props.updateEvents(suggestion);
     };
 
     render() {
