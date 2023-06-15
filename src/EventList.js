@@ -1,6 +1,6 @@
 import React, { Component } from "react"; 
 import Event from "./Event";
-import CitySearch from "./CitySearch";
+//import CitySearch from "./CitySearch";
 
 class EventList extends Component {
     render() {
@@ -23,6 +23,5 @@ class EventList extends Component {
         );
     }
 };
-
 
 export default EventList;
