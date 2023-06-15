@@ -25,6 +25,17 @@ componentWillUnmount(){
   this.mounted = false;
 }
 
+updateEvents = (location) => {
+  getEvents().then((events) => {
+    const locationEvents = (location === "all") ?
+      events:
+      events.filter((event) => event.location === location);
+    this.setState({
+      events: locationEvents
+    });
+  });
+}
+
   render() {
     return (
       <div className="App">
@@ -35,17 +46,6 @@ componentWillUnmount(){
       </div>
     );
   }
-}
-
-updateEvents = (location) => {
-  getEvents().then((events) => {
-    const locationEvents = (location === "all") ?
-      events:
-      events.filter((event) => event.location === location);
-    this.setState({
-      events: locationEvents
-    });
-  });
 }
 
 export default App;
