@@ -14,7 +14,10 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = "YOUR_GET_EVENTS_API_ENDPOINT" + "/" + token;
+        const url = 
+            "YOUR_GET_EVENTS_API_ENDPOINT" + 
+            "/" + 
+            token;
         const result = await axios.get(url);
         if (result.data) {
             var locations = extractLocations(result.data.events);
