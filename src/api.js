@@ -75,3 +75,18 @@ const removeQuery = () => {
         window.history.pushState('', '', newurl);
     }
 };
+
+const getToken = async (code) => {
+    const encodeCode = encodeURIComponent(code);
+    const { access_token } = await fetch(
+       "YOUR_GET_ACCESS_TOKEN_ENDPOINT" + "/" + encodeCode 
+    )
+        .then((res) => {
+            return res.json();
+        }) 
+        .catch((error) => error);
+
+    access_token && localStorage.setItem('access_token', access_token);
+
+    return access_token;
+};
