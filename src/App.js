@@ -9,7 +9,7 @@ import { getEvents, extractLocations } from "./api";
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
   }
 
 componentDidMount() {
