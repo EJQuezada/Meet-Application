@@ -7,12 +7,6 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
 const root = document.getElementById('root');
-//ReactDOM.createRoot(document.getElementById('root'));
-//root.render(
-//  <React.StrictMode>
-//    <App />
-//  </React.StrictMode>
-//);
 render(<App />, root);
 
 // If you want your app to work offline and load faster, you can change
