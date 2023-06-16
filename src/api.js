@@ -82,7 +82,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const { access_token } = await fetch(
-       "YOUR_GET_ACCESS_TOKEN_ENDPOINT" +
+       "https://pio7xt37j9.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" +
         "/" + 
         encodeCode 
     )
