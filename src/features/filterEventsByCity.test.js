@@ -1,17 +1,24 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
+import React from 'react';
+import { mount } from 'enzyme';
+import App from '../App';
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
-    test('when user hasn\'t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-        given('user hasn\'t searched for a city', () => {
+    test('When user has not searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
+        given('user has not searched for any city', () => {
         });
+
+        let AppWrapper;
         when('the user opens the app', () => {
-
+            AppWrapper = mount(<App />);
         });
 
-        then('the user should see the list of upcoming events.', () => {
-
+        then('the user should see the list of all upcoming events from all locations', () => {
+            AppWrapper.update();
+            expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
         });
     });
 
