@@ -1,4 +1,5 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
+import React from 'react';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature.md');
 
