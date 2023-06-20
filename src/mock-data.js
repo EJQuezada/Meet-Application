@@ -1,5 +1,4 @@
-export const mockData = 
-JSON.parse(JSON.stringify([
+export const mockData = [
   {
     kind: "calendar#event",
     etag: '"3181161784712000"',
@@ -15737,6 +15736,8 @@ JSON.parse(JSON.stringify([
     },
     eventType: "default",
   },
-];
+]
+
+JSON.parse(JSON.stringify(mockData));
 
 export { mockData };
