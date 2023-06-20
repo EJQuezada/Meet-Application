@@ -4,6 +4,7 @@ describe('show/hide an event details', () => {
     let browser;
     let page;
     jest.setTimeout(30000);
+
     beforeAll(async () => {
         //jest.setTimeout(30000);
         browser = await puppeteer.launch({
@@ -28,7 +29,7 @@ describe('show/hide an event details', () => {
 
         //await page.waitForSelector('.event');
 
-        const eventDetails = await page.$('.event.event__Details');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeNull();
         //browser.close();
     });
@@ -41,14 +42,14 @@ describe('show/hide an event details', () => {
         //await page.waitForSelector('.event');
         await page.click('.event .details-btn');
 
-        const eventDetails = await page.$('.event.event__Details');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeDefined();
         //browser.close();
     });
 
     test('User can collapse an event to hide its details', async () => {
         await page.click('.event .details-btn');
-        const eventDetails = await page.$('.event.event__Details');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeNull();
     });
 });
