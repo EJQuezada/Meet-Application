@@ -4,10 +4,13 @@ describe('show/hide an event details', () => {
     let browser;
     let page;
     jest.setTimeout(30000);
-
     beforeAll(async () => {
         //jest.setTimeout(30000);
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({
+            headless: false,
+            slowMo: 250,
+            ignoreDefaultArgs: ['--disable-extensions']
+        });
         page = await browser.newPage();
         await page.goto('http://localhost:3000/');
         await page.waitForSelector('.event');
