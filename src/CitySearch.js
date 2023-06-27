@@ -27,13 +27,13 @@ class CitySearch extends Component {
             return this.setState({
                 query: value,
                 suggestions,
-                infoText:''
+                infoText:"",
             });
         } 
-        this.setState({ 
-            query: value,
-            suggestions,
-         });
+        //this.setState({ 
+        //    query: value,
+        //    suggestions,
+        // });
     };
 
     handleItemClicked = (suggestion) => {
