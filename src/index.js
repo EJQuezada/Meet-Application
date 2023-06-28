@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { render } from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import * as atatus from "atatus-js";
+import * as service-worker from "./service-worker";
+import * as atatus from "atatus-spa";
 //import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 //import reportWebVitals from "./reportWebVitals";
 
