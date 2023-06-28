@@ -8,7 +8,11 @@ import * as atatus from "atatus-js";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 //import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>, 
+    document.getElementById("root"));
 const root = document.getElementById('root');
 render(<App />, root);
 
