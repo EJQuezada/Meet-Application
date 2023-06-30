@@ -51,7 +51,7 @@ class App extends Component {
           events={this.state.events} 
         />
         <Event />
-        <NumberOfEvents 
+        <NumberOfEvents updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents} 
         />
       </div>
