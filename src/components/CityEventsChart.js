@@ -26,17 +26,17 @@ const CityEventsChart = ({ allLocations, events }) => {
 
     return (
         <ResponsiveContainer width="99%" height={400}>
-     <PieChart>
-       <Pie
-         data={data}
-         dataKey="value"
-         fill="#8884d8"
-         labelLine={false}
-         label
-         outerRadius={130}           
-       />
-     </PieChart>
-   </ResponsiveContainer>
+            <PieChart>
+            <Pie
+                data={data}
+                dataKey="value"
+                fill="#8884d8"
+                labelLine={false}
+                label
+                outerRadius={130}           
+            />
+            </PieChart>
+        </ResponsiveContainer>
     );
 }
 
