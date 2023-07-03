@@ -58,6 +58,7 @@ class App extends Component {
           setInfoAlert={setInfoAlert} />
         <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
         <div className="charts-container">
+          <EventGenresChart events={events} />
           <CityEventsChart allLocations={allLocations} events={events} />
         </div>
         <EventList events={events} />
