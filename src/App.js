@@ -8,6 +8,7 @@ import { getEvents, extractLocations } from "./api";
 import "./nprogress.css"
 import { ErrorAlert, InfoAlert, WarningALert } from "./Alert";
 import CityEventsChart from "./components/CityEventsChart";
+import EventGenresChart from "./components/EventGenresChart";
 
 class App extends Component {
   state = {
@@ -56,7 +57,9 @@ class App extends Component {
           setCurrentCity={setCurrentCity}
           setInfoAlert={setInfoAlert} />
         <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
-        <CityEventsChart allLocations={allLocations} events={events} />
+        <div className="charts-container">
+          <CityEventsChart allLocations={allLocations} events={events} />
+        </div>
         <EventList events={events} />
       </div>
     );
