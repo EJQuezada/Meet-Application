@@ -48,8 +48,8 @@ const EventGenresChart = ({ events }) => {
 					dataKey="value"
 					fill="#8884d8"
                     labelLine={false}
-					label
-					outerRadius={130}
+					label={renderCustomizedLabel}
+					outerRadius={150}
                 />
 			</PieChart>
 		</ResponsiveContainer>
