@@ -7,7 +7,7 @@ const EventGenresChart = ({ events }) => {
 	const getData = useCallback(() => {
 		const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
 		const data = genres.map((genre) => {
-			const filteredEvents = events.filter(events.filter(event => event.summary.includes(genre));
+			const filteredEvents = events.filter(event => event.summary.includes(genre));
 			return { 
                 name: genre, 
                 value: filteredEvents.length
