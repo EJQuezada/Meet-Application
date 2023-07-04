@@ -6,6 +6,9 @@ import Event from "./Event";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
 import "./nprogress.css"
+import { ErrorAlert, InfoAlert, WarningALert } from "./Alert";
+import CityEventsChart from "./components/CityEventsChart";
+import EventGenresChart from "./components/EventGenresChart";
 
 class App extends Component {
   state = {
@@ -43,17 +46,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <div className="alerts-container">
+          {InfoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+          {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+          {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+        </div>
         <CitySearch 
-          locations={this.state.locations} 
-          updateEvents={this.updateEvents}  
-        />
-        <EventList 
-          events={this.state.events} 
-        />
-        <Event />
-        <NumberOfEvents updateEvents={this.updateEvents}
-          numberOfEvents={this.state.numberOfEvents} 
-        />
+          allLocations={allLocations}
+          setCurrentCity={setCurrentCity}
+          setInfoAlert={setInfoAlert} />
+        <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
+        <div className="charts-container">
+          <EventGenresChart events={events} />
+          <CityEventsChart allLocations={allLocations} events={events} />
+        </div>
+        <EventList events={events} />
       </div>
     );
   }
