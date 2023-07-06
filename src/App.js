@@ -9,19 +9,34 @@ import "./nprogress.css"
 import { ErrorAlert, InfoAlert, WarningALert } from "./Alert";
 import CityEventsChart from "./components/CityEventsChart";
 import EventGenresChart from "./components/EventGenresChart";
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     eventCount: 32,
-  }
+    selectedCity: null,
+    warningText: "",
+    showWelcomeScreen: underfined,
+  };
 
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
+        this.setState({ 
+          events: events, 
+          locations: extractLocations(events) 
+        });
       }
     });
   }
@@ -36,6 +51,7 @@ class App extends Component {
         const locationEvents = (location === "all") ?
           events:
           events.filter((event) => event.location === location);
+        const shownEvents = locationEvents.slice(0, this.state.eventCount);
         this.setState({
           events: locationEvents
         });
