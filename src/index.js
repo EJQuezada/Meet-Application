@@ -7,6 +7,7 @@ import App from "./App";
 import * as atatus from "atatus-spa";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+//atatus.config("YOUR_ATATUS_API_KEY").install();
 
 const root = document.getElementById("root");
 render(
