@@ -8,5 +8,4 @@ jspm_packages
 # environment variables
 config.json
 
-#test
-App.test.js
+
