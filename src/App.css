@@ -76,6 +76,14 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.EventList {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2.25rem;
+  margin: 1.2rem auto 2rem;
+  padding: 0 1rem;
+}
+
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -131,6 +139,14 @@ input[type="number"] {
 .Alert {
   position: fixed;
   top: 20px;
+}
+
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  z-index: 1000;
 }
 
 .data-vis-wrapper {
@@ -198,8 +214,6 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-
-
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
@@ -211,3 +225,4 @@ input[type="number"] {
     margin: 0 auto;
   }
 }
+
