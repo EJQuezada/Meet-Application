@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import Event from "./Event";
@@ -10,6 +12,7 @@ import "./nprogress.css"
 import { ErrorAlert, InfoAlert, WarningAlert } from "./Alert";
 import CityEventsChart from "./components/CityEventsChart";
 import EventGenresChart from "./components/EventGenresChart";
+import WelcomeScreen from "./WelcomeScreen";
 import {
   ScatterChart,
   Scatter,
