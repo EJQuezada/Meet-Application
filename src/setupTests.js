@@ -19,3 +19,8 @@ beforeEach(() => {
         disconnect: jest.fn(),
     }));
 });
+
+afterEach(() => {
+    window.ResizeObserver = ResizeObserver;
+    jest.restoreAllMocks();
+});
