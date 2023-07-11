@@ -4,9 +4,10 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import Event from "./Event";
 import NumberOfEvents from "./NumberOfEvents";
-import { getEvents, extractLocations } from "./api";
+import EventGenre from "./EventGenre";
+import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import "./nprogress.css"
-import { ErrorAlert, InfoAlert, WarningALert } from "./Alert";
+import { ErrorAlert, InfoAlert, WarningAlert } from "./Alert";
 import CityEventsChart from "./components/CityEventsChart";
 import EventGenresChart from "./components/EventGenresChart";
 import {
@@ -26,11 +27,26 @@ class App extends Component {
     eventCount: 32,
     selectedCity: null,
     warningText: "",
-    showWelcomeScreen: underfined,
+    showWelcomeScreen: undefined,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = await searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events,
+            locations: extractLocations(events)
+          });
+        }
+      });
+    }
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ 
@@ -45,6 +61,14 @@ class App extends Component {
     this.mounted = false;
   }
 
+  promptOfflineWarning = () => {
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'You are offline, so events may not be up to date'
+      })
+    }
+  }
+
   updateEvents = (location, eventCount) => {
     if (!eventCount) {
       getEvents().then((events) => {
@@ -53,32 +77,142 @@ class App extends Component {
           events.filter((event) => event.location === location);
         const shownEvents = locationEvents.slice(0, this.state.eventCount);
         this.setState({
-          events: locationEvents
+          events: shownEvents,
+          selectedCity: location,
+        });
+      });
+    } else if (eventCount && !location) {
+      getEvents().then((events) => {
+        const locationEvents = events.filter((event) =>
+          this.state.locations.includes(event.location)
+        );
+        const shownEvents = locationEvents.slice(0, eventCount);
+        this.setState({
+          events: shownEvents,
+          eventCount: eventCount,
+        });
+      });
+    } else if (this.state.selectedCity === "all") {
+      getEvents().then((events) => {
+        const locationEvents = events;
+        const shownEvents = locationEvents.slice(0, eventCount);
+        this.setState({
+          events: shownEvents,
+          eventCount: eventCount,
+        });
+      });
+    } else {
+      getEvents().then((events) => {
+        const locationEvents = 
+          this.state.locations === "all"
+            ? events
+            : events.filter(
+              (event) => this.state.selectedCity === event.location
+            );
+        const shownEvents = locationEvents.slice(0, eventCount);
+        this.setState({
+          events: shownEvents,
+          eventCount: eventCount,
         });
       });
     }
-  }
+  };
+
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location)=>{
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  };
 
   render() {
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
     return (
       <div className="App">
-        <h1>Meet App</h1>
-        <div className="alerts-container">
-          {InfoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-          {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
-          {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-        </div>
-        <CitySearch 
-          allLocations={allLocations}
-          setCurrentCity={setCurrentCity}
-          setInfoAlert={setInfoAlert} />
-        <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
-        <div className="charts-container">
-          <EventGenresChart events={events} />
-          <CityEventsChart allLocations={allLocations} events={events} />
-        </div>
-        <EventList events={events} />
+        <Row className="justify-content-center py-5">
+          <Col md={9} className="mb-5 d-flex flex-column align-items-center">
+            <h1>Welcome to MeetApp</h1>
+            <div
+              className="position-absolute start-50 translate-middle-x"
+              style={{ top: "10px" }}
+            >
+              <WarningAlert text={this.state.offlineText} />
+            </div>
+            <h4 className="mb-4">Choose your nearest city</h4>
+            <CitySearch
+              locations={this.state.locations}
+              updateEvents={this.updateEvents}
+            />
+            <NumberOfEvents
+              numberOfEvents={this.state.numberOfEvents}
+              udpateEvents={this.updateEvents}
+            />
+          </Col>
+        </Row>
+        <Row className=" py-5 text-center">
+          <h3 className="mb-4">Events in each city</h3>
+          <Col>
+            <EventGenre events={this.state.events} />
+          </Col>
+          <Col>
+            <ResponsiveContainer width="100%" height={500}>
+              <ScatterChart
+                margin={{ top: 20, right: 20, bottom: 50, left: 0 }}
+              >
+                <CartesianGrid />
+                <XAxis
+                  type="category"
+                  dataKey="city"
+                  name="city"
+                  angle="35"
+                  minTickGap="2"
+                  tick={{ textAnchor: "start" }}
+                />
+                <YAxis
+                  allowDecimals={false}
+                  type="number"
+                  dataKey="number"
+                  name="number of events"
+                />
+                <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                <Scatter data={this.getData()} fill="#8884d8" />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs={10} md={8}>
+            <EventList events={this.state.events} />
+          </Col>
+        </Row>
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
+      
+//        <div className="alerts-container">
+//          {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+//          {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+//          {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+//        </div>
+//        <CitySearch 
+//          allLocations={allLocations}
+//          setCurrentCity={setCurrentCity}
+//          setInfoAlert={setInfoAlert} />
+//        <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
+//        <div className="charts-container">
+//          <EventGenresChart events={events} />
+//          <CityEventsChart allLocations={allLocations} events={events} />
+//        </div>
+//        <EventList events={events} />
+//      </div>
     );
   }
 }
