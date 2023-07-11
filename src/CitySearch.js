@@ -10,7 +10,7 @@ class CitySearch extends Component {
             showSuggestions: undefined,
             infoText: "",
         };
-    };
+    }
 
     handleInputChanged = (event) => {
         const value = event.target.value;
@@ -53,7 +53,8 @@ class CitySearch extends Component {
                     className='city'
                     value={this.state.query}
                     onChange={this.handleInputChanged}
-                    onFocus={() => { this.setState({ showSuggestions:true }) }}
+                    onFocus={() => { this.setState({ showSuggestions: true });
+                    }}
                 />
                 <ul 
                     className='suggestions'
@@ -67,7 +68,7 @@ class CitySearch extends Component {
                             {suggestion}
                         </li>
                     ))}
-                    <li onClick={() => this.handleItemClicked('all')}>
+                    <li onClick={() => this.handleItemClicked("all")}>
                         <b>See all cities</b>
                     </li>
                 </ul>
