@@ -40,4 +40,4 @@ const EventGenresChart = ({ events }) => {
 	);
   };
   
-  export default EventGenresChart;;
+  export default EventGenresChart;

@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import {
     ScatterChart,
     Scatter,
     XAxis, YAxis,
     CartesianGrid,
     Tooltip,
-    ResponsiveContainer
+    ResponsiveContainer,
+    PieChart,
+    Pie
 } from 'recharts';
 
 const CityEventsChart = ({ allLocations, events }) => {
@@ -26,15 +29,32 @@ const CityEventsChart = ({ allLocations, events }) => {
 
     return (
         <ResponsiveContainer width="99%" height={400}>
+            <ScatterChart 
+                margin={{
+                    top: 20,
+                    right: 20, 
+                    bottom: 60,
+                    left: -30,
+                }}
+            >
+                <CartesianGrid />
+                <XAxis 
+                    type="category" dataKey="city" name="City" 
+                    angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14 }}
+                />
+                <YAxis type="number" dataKey="y" />
+            </ScatterChart>
             <PieChart>
-            <Pie
-                data={data}
-                dataKey="value"
-                fill="#8884d8"
-                labelLine={false}
-                label
-                outerRadius={130}           
-            />
+                <Pie
+                    data={data}
+                    dataKey="value"
+                    fill="#8884d8"
+                    labelLine={false}
+                    label
+                    outerRadius={130}
+                >
+                    
+                </Pie>
             </PieChart>
         </ResponsiveContainer>
     );

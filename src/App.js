@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
+import { ReactDOM } from "react-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import Event from "./Event";
@@ -10,8 +11,6 @@ import EventGenre from "./EventGenre";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import "./nprogress.css"
 import { ErrorAlert, InfoAlert, WarningAlert } from "./Alert";
-import CityEventsChart from "./components/CityEventsChart";
-import EventGenresChart from "./components/EventGenresChart";
 import WelcomeScreen from "./WelcomeScreen";
 import {
   ScatterChart,
@@ -39,8 +38,11 @@ class App extends Component {
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+    const isLocal = window.location.href.startsWith('http://localhost')
+    ? true
+    : code || isTokenValid;
+    this.setState({ showWelcomeScreen: !(isLocal) });
+    if ((isLocal) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({
@@ -152,7 +154,7 @@ class App extends Component {
             />
             <NumberOfEvents
               numberOfEvents={this.state.numberOfEvents}
-              udpateEvents={this.updateEvents}
+              updateEvents={this.updateEvents}
             />
           </Col>
         </Row>
@@ -199,23 +201,6 @@ class App extends Component {
           }}
         />
       </div>
-      
-//        <div className="alerts-container">
-//          {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-//          {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
-//          {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-//        </div>
-//        <CitySearch 
-//          allLocations={allLocations}
-//          setCurrentCity={setCurrentCity}
-//          setInfoAlert={setInfoAlert} />
-//        <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
-//        <div className="charts-container">
-//          <EventGenresChart events={events} />
-//          <CityEventsChart allLocations={allLocations} events={events} />
-//        </div>
-//        <EventList events={events} />
-//      </div>
     );
   }
 }

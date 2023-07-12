@@ -11,10 +11,9 @@ class Alert extends Component {
             color: this.color,
             backgroundColor: this.bgColor,
             borderWidth: "2px",
-            borderStyle: "solid",
             fontWeight: "bolder",
             borderRadius: "7px",
-            boderColor: this.color,
+            borderColor: this.color,
             textAlign: "center",
             fontSize: "12px",
             margin: "10px 0",
@@ -35,7 +34,6 @@ class InfoAlert extends Alert {
     constructor(props) {
         super(props);
         this.color = 'rgb(0, 0, 255)'; //blue
-        this.bgColor = 'rgb(220, 220, 255)' //light blue
     }
 }
 
