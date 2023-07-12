@@ -2,7 +2,7 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "",
-  "main": "handler.js",
+  "homepage": "https://ejquezada.github.io/Meet-Application",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
