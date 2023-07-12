@@ -14,6 +14,8 @@ import CityEventsChart from "./components/CityEventsChart";
 import EventGenresChart from "./components/EventGenresChart";
 import WelcomeScreen from "./WelcomeScreen";
 import {
+  PieChart,
+  Pie,
   ScatterChart,
   Scatter,
   XAxis,
