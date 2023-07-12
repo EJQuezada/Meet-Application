@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { ReactDOM } from "react-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
-import Event from "./Event";
 import NumberOfEvents from "./NumberOfEvents";
 import EventGenre from "./EventGenre";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import "./nprogress.css"
-import { ErrorAlert, InfoAlert, WarningAlert } from "./Alert";
+import { WarningAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
 import {
   ScatterChart,
