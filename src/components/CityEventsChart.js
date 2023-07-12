@@ -6,7 +6,9 @@ import {
     XAxis, YAxis,
     CartesianGrid,
     Tooltip,
-    ResponsiveContainer
+    ResponsiveContainer,
+    PieChart,
+    Pie
 } from 'recharts';
 
 const CityEventsChart = ({ allLocations, events }) => {
@@ -42,6 +44,18 @@ const CityEventsChart = ({ allLocations, events }) => {
                 />
                 <YAxis type="number" dataKey="y" />
             </ScatterChart>
+            <PieChart>
+                <Pie
+                    data={data}
+                    dataKey="value"
+                    fill="#8884d8"
+                    labelLine={false}
+                    label
+                    outerRadius={130}
+                >
+                    
+                </Pie>
+            </PieChart>
         </ResponsiveContainer>
     );
 }
