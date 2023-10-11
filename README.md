@@ -16,16 +16,16 @@ Meet App allows users to search for a city and get a list of events hosted in th
 * Atatus;
 
 ## Features
--Receive and send messages,
--Serverless functions deployed using AWS Lambda,
--Performs Oauth and accesses Google Calender API via serverless functions,
--React Recharts visualization library,
--Jest test scripting for unit and integration testing,
--Enzyme for shallow rendering unit tests,
--Enzyme for full rendering integration tests,
--Puppeteer for user acceptance and end-to-end testing,
--Progressive Web Application.
+* Receive and send messages,
+* Serverless functions deployed using AWS Lambda,
+* Performs Oauth and accesses Google Calender API via serverless functions,
+* React Recharts visualization library,
+* Jest test scripting for unit and integration testing,
+* Enzyme for shallow rendering unit tests,
+* Enzyme for full rendering integration tests,
+* Puppeteer for user acceptance and end-to-end testing,
+* Progressive Web Application.
 
 ## Set up
--Set up development environment running in the Terminal "npx create-expo-app chat-app --template" from root folder of project
+* Set up development environment running in the Terminal "npx create-expo-app chat-app --template" from root folder of project
 
