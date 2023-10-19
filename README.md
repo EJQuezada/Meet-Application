@@ -1,4 +1,4 @@
-## Meet-Application
+# Meet-Application
 Meet is an application that uses React based tech stack to get a list of events hosted by city or in all cities.
 
 ## About
