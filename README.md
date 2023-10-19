@@ -27,5 +27,5 @@ Meet App allows users to search for a city and get a list of events hosted in th
 * Progressive Web Application.
 
 ## Set up
-* Set up development environment running in the Terminal "npx create-expo-app chat-app --template" from root folder of project.
+* Set up development environment running in the Terminal from root of project folder: **npx create-expo-app chat-app --template** from root folder of project.
 
