@@ -16,7 +16,13 @@ Meet App allows users to search for a city and get a list of events hosted in th
 * Atatus;
 
 ## Features
-* Receive and send messages, filter events by city, show/hide event details, specify number of events, use app while offline, and data visualization;
+* The following are main features from this application:
+  1) Receive and send messages,
+  2) Filter events by city,
+  3) Show/hide event details,
+  4) Specify number of events,
+  5) Use app while offline, and
+  6) Data visualization;
 * Serverless functions deployed using AWS Lambda;
 * Performs Oauth and accesses Google Calender API via serverless functions;
 * React Recharts visualization library;
