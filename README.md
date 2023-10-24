@@ -33,5 +33,8 @@ Meet App allows users to search for a city and get a list of events hosted in th
 * Progressive Web Application.
 
 ## Set up
-* Set up development environment running in the Terminal from root of project folder: **npx create-expo-app chat-app --template** 
+* Run application by
+    1) going to https://ejquezada.github.io/Meet-Application/
+    2) sign in with Google account for authentication and authorization
+    3) select city or start with default settings
 
