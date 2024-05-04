@@ -9,9 +9,9 @@ Meet App allows users to search for a city and get a list of events hosted in th
 * React Native; 
 * Recharts; 
 * AWS Lamda; 
-* serverless; 
+* Serverless; 
 * Jest;
-* cucumber-jest; 
+* Cucumber-jest; 
 * Puppeteer; 
 * Atatus;
 
