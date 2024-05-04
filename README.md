@@ -24,7 +24,7 @@ Meet App allows users to search for a city and get a list of events hosted in th
   5) Use app while offline, and
   6) Data visualization;
 * Serverless functions deployed using AWS Lambda;
-* Performs Oauth and accesses Google Calender API via serverless functions;
+* Performs OAuth and accesses Google Calender API via serverless functions;
 * React Recharts visualization library;
 * Jest test scripting for unit and integration testing;
 * Enzyme for shallow rendering unit tests;
